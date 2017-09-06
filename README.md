@@ -61,5 +61,9 @@ A optional woods map file maybe specified, if no value for woods.mapfile is pres
 ...F........OFO......F..........F.........F......OF.......
 ...OO................O..........OO.......O.......O........
 ```
+![alt text](./resources/woods7_it.png "Woods1")
+
+![alt text](./resources/woods7_wilson.png "Woods1")
+
 ## TODO
 + Implement more targeted genetic algorithm, only classifiers that have participated in a significant number of action sets [A] should be eligible for the genetic algorithm.
