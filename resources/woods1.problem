@@ -1,0 +1,17 @@
+runs=1
+woods.problems=10000
+woods.mapfile=/resources/woods1.txt
+debug.zcs=debug
+moving.avg=50
+condition.length=16
+action.length=3
+classifiers=400
+p=0.33
+s=20.0
+beta=0.2
+gamma=0.71
+tau=0.1
+chi=0.5
+mu=0.002
+rho=0.125
+phi=0.5
