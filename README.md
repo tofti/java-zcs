@@ -1,9 +1,9 @@
 # java-zcs
 Java implementation of a simplified strength based learning classifier system
 
-This implementation of ZCS was first written in 2005, and revised/revived in 2017. If you catch any bugs, let me know!
+This implementation of ZCS was first written in 2005 during my PhD, and revised/revived in 2017. If you catch any bugs, let me know!
 
-##Background
+## Background
 
 [Learning classifier systems (LCS)](https://en.wikipedia.org/wiki/Learning_classifier_system) are unsupervised rule based inductive learning systems. The system is comprised of many condition-action rules called classifiers, these classifiers compete to receive credit within the LCS. When the classifier system receives input from its environment the population of known classifiers is scanned for those whose condition part matches the current environment state. A selection mechanism determines which of the candidate classifiers becomes active, and the action of the active classifier is executed. When credit is received from the environment the LCS distributes the credit to reinforce the classifiers that advocatd the action. In addition to reinforcing classifiers the LCS has a discovery component, typically a genetic algorithm, which is used to discover new credit worthy classifiers. ZCS is a simplified strength based classifier system.
 
