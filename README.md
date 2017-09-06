@@ -18,11 +18,14 @@ ZCS has been extended/implemented/used/discussed in
 + [Applications of Learning Classifier Systems, Larry Bull](http://www.springer.com/gp/book/9783540211099)
 
 
-In the original publication the ZCS was tested on a 'Woods' problem. The idea was to have an animat controlled by a ZCS pursue food (payoff) by sensing it's position (the environmental condition) and taking a move toward the food (reward). With these problems the LCS could be evaluated as learning mechanism in a range of well understood environments.
+In the original publication the ZCS was tested on a maze ('Woods') problem. The idea was to have an animat controlled by a ZCS pursue food (payoff) by sensing its position (the environmental condition) and taking a move toward the food (reward). 
 
 
 ## Running the code
-There are two problem files, woods1.problem and woods2.problem. The parameters in the problem files are self explanatory with ZCS parameters specified as you would expect (check Wilson's paper for details). Setting debug.zcs to true will output (a lot) of debug information to a text file. moving.avg specifies the moving average window for measuring steps to food, at the end of the runs a CSV file is output with two column for each run, one containing the moving average, and the other the absolute of steps to food. I'll leave calculating the average over the runs to the user :)
+There are two problem files, woods1.problem and woods2.problem. The parameters in the problem files are self explanatory with ZCS parameters specified as you would expect (check Wilson's paper for details). Setting debug.zcs to true will output (a lot) of debug information to a text file. moving.avg specifies the moving average applied to the steps to food measure for each problem.
+
+### Output
+At the end of the runs a CSV file is output with two columns for each run containing the moving average, and the number of steps to food. A woods population file is also produced which shows the final population of classifiers for each run.
 
 A optional woods map file maybe specified, if no value for woods.mapfile is present the woods1 problem is assumed. Alternative map files maybe generated and specified with woods.mapfile as long as the map contains '.' (blank), 'O' (tree or rock depending on what you read), and 'F' (food), and the map is rectangular.
  
@@ -67,3 +70,4 @@ A optional woods map file maybe specified, if no value for woods.mapfile is pres
 
 ## TODO
 + Implement more targeted genetic algorithm, only classifiers that have participated in a significant number of action sets [A] should be eligible for the genetic algorithm.
++ Create tools to analyze and compact rulesets.
