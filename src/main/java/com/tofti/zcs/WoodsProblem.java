@@ -94,7 +94,6 @@ public class WoodsProblem {
             }
             out.newLine();
         }
-        out.flush();
         out.close();
     }
 

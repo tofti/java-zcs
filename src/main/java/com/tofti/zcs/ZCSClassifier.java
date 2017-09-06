@@ -6,19 +6,19 @@ import java.util.concurrent.atomic.AtomicLong;
 
 public class ZCSClassifier implements Comparable {
     private static final char[] ALPHABET;
-    private static final char[] COVERING_ALPHABET;
+    private static final char[] ALPHABET_WO_WILDCARD;
     private static final char ZERO;
     private static final char ONE;
-    private static final char HASH;
+    private static final char WILCARD;
 
     static AtomicLong SEQUENCE = new AtomicLong();
 
     static {
         ZERO = '0';
         ONE = '1';
-        HASH = '#';
-        COVERING_ALPHABET = new char[] {ZERO, ONE};
-        ALPHABET = new char[] {ZERO, ONE, HASH};
+        WILCARD = '#';
+        ALPHABET_WO_WILDCARD = new char[] {ZERO, ONE};
+        ALPHABET = new char[] {ZERO, ONE, WILCARD};
     }
 
     private char[] condition;
@@ -105,7 +105,7 @@ public class ZCSClassifier implements Comparable {
         }
         // look for a non-matching element
         for(int i = 0; i < e.length; i++) {
-            if(condition[i] != HASH && condition[i] != e[i]) {
+            if(condition[i] != WILCARD && condition[i] != e[i]) {
                 return false;
             }
         }
@@ -151,17 +151,21 @@ public class ZCSClassifier implements Comparable {
         char[] condition = new char[cLength];
         for(int i = 0; i < condition.length; i++) {
             if(ZCS.nextDouble() < p) {
-                condition[i] = HASH;
+                condition[i] = WILCARD;
             } else {
-                condition[i] = COVERING_ALPHABET[(int)(ZCS.nextDouble() * 2)];
+                condition[i] = getRandomCharFrom(ALPHABET_WO_WILDCARD);
             }
         }
 
         char[] action = new char[aLength];
         for(int i = 0; i < action.length; i++) {
-            action[i] = ALPHABET[(int)(ZCS.nextDouble() * 2)];
+            action[i] = getRandomCharFrom(ALPHABET_WO_WILDCARD);
         }
         return new ZCSClassifier(condition, action, strength);
+    }
+
+    private static char getRandomCharFrom(char [] source) {
+        return source[ZCS.nextInt(source.length)];
     }
 
     public static ZCSClassifier generateClassifier(String condition, String action, double strength) {
@@ -179,13 +183,13 @@ public class ZCSClassifier implements Comparable {
         // flip some of the condition bits to # with a probability p
         for(int i = 0; i < condition.length; i++) {
             if(ZCS.nextDouble() < p) {
-                condition[i] = HASH;
+                condition[i] = WILCARD;
             }
         }
         // generate a random action
         char[] action = new char[aLength];
         for(int i = 0; i < action.length; i++) {
-            action[i] = ALPHABET[(int)(ZCS.nextDouble() * 2)];
+            action[i] = getRandomCharFrom(ALPHABET_WO_WILDCARD);
         }
         return generateClassifier(condition, action, strength);
     }
@@ -229,16 +233,16 @@ public class ZCSClassifier implements Comparable {
         // for each allele test for mutation
         char[] condition = classifier.getCondition();
         for(int i = 0; i < condition.length; i++) {
-            // mutate the i'th allele
+            // mutate the i'th allele of the condition
             if(ZCS.nextDouble() < mu) {
-                condition[i] = ALPHABET[(int)(ZCS.nextDouble() * ALPHABET.length)];
+                condition[i] = getRandomCharFrom(ALPHABET);
             }
         }
         char[] action = classifier.getAction();
         for(int i = 0; i < action.length; i++) {
-            // mutate the ith allele
+            // mutate the ith allele of the action
             if(ZCS.nextDouble() < mu) {
-                action[i] = ALPHABET[(int)(ZCS.nextDouble() * 2)];
+                action[i] = getRandomCharFrom(ALPHABET_WO_WILDCARD);
             }
         }
     }

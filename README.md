@@ -25,7 +25,7 @@ In the original publication the ZCS was tested on a maze ('Woods') problem. The 
 There are two problem files, woods1.problem and woods2.problem. The parameters in the problem files are self explanatory with ZCS parameters specified as you would expect (check Wilson's paper for details). Setting debug.zcs to true will output (a lot) of debug information to a text file. moving.avg specifies the moving average applied to the steps to food measure for each problem.
 
 ### Output
-At the end of the runs a CSV file is output with two columns for each run containing the moving average, and the number of steps to food. A woods population file is also produced which shows the final population of classifiers for each run.
+At the end of the runs a CSV file is output with two columns for each run containing the moving average, and the number of steps to food. A woods population file is also produced which shows the final population of classifiers for each run (#todo).
 
 A optional woods map file maybe specified, if no value for woods.mapfile is present the woods1 problem is assumed. Alternative map files maybe generated and specified with woods.mapfile as long as the map contains '.' (blank), 'O' (tree or rock depending on what you read), and 'F' (food), and the map is rectangular.
  

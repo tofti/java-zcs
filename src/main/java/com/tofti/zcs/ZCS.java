@@ -73,6 +73,10 @@ public class ZCS {
         return RAND.nextDouble();
     }
 
+    static int nextInt(final int n) {
+        return RAND.nextInt(n);
+    }
+
     private ZCSClassifierSet population;
 
     // current timestep action set [A]
