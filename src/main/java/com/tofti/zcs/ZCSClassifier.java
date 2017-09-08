@@ -231,16 +231,15 @@ public class ZCSClassifier implements Comparable {
         childB.setStrength(meanChildStrength);
     }
 
-    public static void mutateClassifier(ZCSClassifier classifier, final double mu) {
+    public void mutateClassifier(final double mu) {
         // for each allele test for mutation
-        char[] condition = classifier.getCondition();
         for(int i = 0; i < condition.length; i++) {
             // mutate the i'th allele of the condition
             if(ZCS.nextDouble() < mu) {
                 condition[i] = getRandomCharFrom(ALPHABET);
             }
         }
-        char[] action = classifier.getAction();
+
         for(int i = 0; i < action.length; i++) {
             // mutate the ith allele of the action
             if(ZCS.nextDouble() < mu) {

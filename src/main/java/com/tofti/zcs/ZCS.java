@@ -314,8 +314,8 @@ public class ZCS {
         }
 
         // mutation mu
-        ZCSClassifier.mutateClassifier(childA, mu);
-        ZCSClassifier.mutateClassifier(childB, mu);
+        childA.mutateClassifier(mu);
+        childB.mutateClassifier(mu);
 
         log.log("Children after mutation...");
         log.log("ChildA : " + childA);

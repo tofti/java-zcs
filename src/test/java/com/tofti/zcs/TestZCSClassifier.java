@@ -3,6 +3,8 @@ package com.tofti.zcs;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.Arrays;
+
 public class TestZCSClassifier {
 
     @Test
@@ -73,8 +75,9 @@ public class TestZCSClassifier {
         ZCSClassifier cs1 = ZCSClassifier.generateClassifier("1111", "0000", 10.0);
         System.out.println("Prior to clone...\ncs1 = " + cs1);
         ZCSClassifier cs1Clone = cs1.cloneClassifier();
-        Assert.assertTrue(cs1.equals(cs1Clone));
-        Assert.assertEquals(cs1.getCondition(), cs1Clone.getCondition());
+        Assert.assertFalse(cs1.equals(cs1Clone));
+        Assert.assertTrue(Arrays.equals(cs1.getCondition(), cs1Clone.getCondition()));
+        Assert.assertTrue(Arrays.equals(cs1.getAction(), cs1Clone.getAction()));
         System.out.println("Post clone...\ncs1 = " + cs1 + "\ncs1Clone = " + cs1Clone);
     }
 
@@ -91,7 +94,7 @@ public class TestZCSClassifier {
     public void testMutateClassifier() {
         ZCSClassifier cs1 = ZCSClassifier.generateClassifier("#11#", "0000", 10.0);
         System.out.println("Prior to mutation...\ncs1 = " + cs1);
-        ZCSClassifier.mutateClassifier(cs1, 0.33);
+        cs1.mutateClassifier(0.33);
         System.out.println("Post mutation...\ncs1 = " + cs1);
     }
 }
