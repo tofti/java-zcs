@@ -157,10 +157,7 @@ public class ZCSClassifier implements Comparable {
             }
         }
 
-        char[] action = new char[aLength];
-        for(int i = 0; i < action.length; i++) {
-            action[i] = getRandomCharFrom(ALPHABET_WO_WILDCARD);
-        }
+        char[] action = getRandomAction(aLength);
         return new ZCSClassifier(condition, action, strength);
     }
 
@@ -187,11 +184,16 @@ public class ZCSClassifier implements Comparable {
             }
         }
         // generate a random action
+        char[] action = getRandomAction(aLength);
+        return generateClassifier(condition, action, strength);
+    }
+
+    private static char[] getRandomAction(int aLength) {
         char[] action = new char[aLength];
         for(int i = 0; i < action.length; i++) {
             action[i] = getRandomCharFrom(ALPHABET_WO_WILDCARD);
         }
-        return generateClassifier(condition, action, strength);
+        return action;
     }
 
     public static void crossoverClassifiers(ZCSClassifier childA, ZCSClassifier childB) {
