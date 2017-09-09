@@ -22,6 +22,18 @@ In the original publication the ZCS was tested on several maze problems. The ide
 
 
 ## Running the code
+### Prequisites
+You need Maven, javac, git, and java on your path.
+```
+where javac java git mvn
+```
+Do:
+```
+git clone https://github.com/tofti/java-zcs.git
+cd java-zcs 
+mvn package
+java -cp target/java-zcs-1.0-SNAPSHOT.jar com.tofti.zcs.WoodsProblem ./resources/woods1.problem
+```
 There are two problem files, woods1.problem and woods2.problem. The parameters in the problem files are self explanatory with ZCS parameters specified as you would expect (check Wilson's paper for details). Setting debug.zcs to true will output (a lot) of debug information to a text file. moving.avg specifies the moving average applied to the steps to food measure for each problem. Example problem file:
 
 ```
