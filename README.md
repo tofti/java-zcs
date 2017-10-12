@@ -5,7 +5,7 @@ This implementation of ZCS was first written in 2005 during my PhD, and revised/
 
 ## Background
 
-[Learning classifier systems (LCS)](https://en.wikipedia.org/wiki/Learning_classifier_system) are unsupervised rule based machine learning systems. The system is comprised of many condition-action rules called classifiers, these classifiers compete to receive credit within the LCS. The classifier system receives input from its environment whereby the population of known classifiers is scanned for those whose condition part matches the current environment state. A selection mechanism determines which of the candidate classifiers becomes active, and the action of the active classifier is executed. When reard is received from the environment the LCS distributes credit to reinforce the classifiers that advocated the action. In addition to reinforcing classifiers the LCS has a discovery component (usually a genetic algorithm) which is used to discover new credit worthy classifiers. The genetic algorithm favors stronger classifiers using a roulette wheel selection policy.
+[Learning classifier systems (LCS)](https://en.wikipedia.org/wiki/Learning_classifier_system) are unsupervised rule based machine learning systems. The system is comprised of many condition-action rules called classifiers that compete to receive credit within the LCS. The classifier system receives input from its environment whereby the population of known classifiers is scanned for those whose condition part matches the current environment state. A selection mechanism determines which of the candidate classifiers becomes active, and the action of the active classifier is executed. When reward is received from the environment the LCS distributes credit to reinforce the classifiers that advocated the action. In addition to reinforcing classifiers the LCS has a discovery component (usually a genetic algorithm) which is used to discover new credit worthy classifiers. The genetic algorithm favors stronger classifiers using a roulette wheel selection policy.
 
 The ZCS is documented in
 + [Stewart W. Wilson, ZCS: A Zeroth Level Classifier System, Evolutionary Computation, vol 2:1, pg 1 - 18, 1993](http://www.eskimo.com/~wilson/ps/zcs.pdf).
@@ -18,8 +18,7 @@ ZCS has been extended/implemented/used/discussed in
 + [Applications of Learning Classifier Systems, Larry Bull](http://www.springer.com/gp/book/9783540211099)
 
 
-In the original publication the ZCS was tested on several maze problems. The idea was to have an animat controlled by a ZCS pursue food (payoff) by sensing its position (the environmental condition) and taking a move toward the food (reward). There are two problems, Woods1 and Woods2.
-
+In the original publication the ZCS was tested on several maze problems. The idea was to have an animat controlled by a ZCS pursue food (payoff) by sensing its position (the environmental condition) and taking a move toward the food (reward). 
 
 ## Running the code
 ### Prequisites
@@ -34,7 +33,7 @@ cd java-zcs
 mvn package
 java -cp target/java-zcs-1.0-SNAPSHOT.jar com.tofti.zcs.WoodsProblem ./resources/woods1.problem
 ```
-There are two problem files, woods1.problem and woods2.problem. The parameters in the problem files are self explanatory with ZCS parameters specified as you would expect (check Wilson's paper for details). Setting debug.zcs to true will output (a lot) of debug information to a text file. moving.avg specifies the moving average applied to the steps to food measure for each problem. Example problem file:
+There are two problem files, woods1.problem and woods2.problem (see Wilson's paper for a description of these problems). The parameters in the problem files are self explanatory with ZCS parameters specified as you would expect (again, check Wilson's paper for details). Setting debug.zcs to true will output (a lot) of debug information to a text file. moving.avg specifies the moving average applied to the steps to food measure for each problem. Example problem file:
 
 ```
 runs=100
